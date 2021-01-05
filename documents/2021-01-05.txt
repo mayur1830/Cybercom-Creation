@@ -1,0 +1,42 @@
+Date:2021-01-05
+Topic:Git & GitHub
+--------------------------
+I had just basic idea about the git and github.
+I have practice document that provided by you.
+Now today i learned many things of git.
+I learned  basic command of git then how to create repository and how to do commit etc..
+Then many more about git three stage architecture[working directory,staging area,git directory(repository)] and how to cloning repository in local machine and git file structure life cycle[untracked,unmodified,modified,staged]
+-------------------------
+1)Basic command of git
+-->git status
+-->git init
+-->git add . or git add --a
+-->git commit -m "Message" or git commit(Then editor open we have to press key esc+:+wq)
+-->git log (see all commit of git) 
+2)If we want to delete .git then
+-->open git bash 
+-->rm-rf .git
+-->means now it is untracking stage
+3)git clone [url]
+-->it is used for clonning git repositories.
+4)If we want to ignore files in out project then
+-->open git bash
+-->run command
+-->touch .gitignore
+-->in this file we have to put file or folder directory that we want to be a ignore.
+-->like we want to ignore all log file then in .gitignore write(*.log)
+5)git diff (It differencing to working area to staging area)
+6)git diff --staged (It differencing staging area to previous commit)
+7)If we want to skip staging area
+-->git commit -a -m "Message"
+8)remove and rename
+-->for remove(git rm (file name))[It will remove the file]
+-->for rename(git mv (original name)(new name))
+9)How to untrack file
+-->git rm --cached (file name)
+10)Git remote 
+-->git remote
+-->git remote -v
+-->how to add ssh etc
+Now performing branching and merging in git.
+
