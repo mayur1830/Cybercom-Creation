@@ -1,0 +1,31 @@
+Date:2021-01-07
+Topic:Git and GitHub
+----------------------------
+Today i performed all previous command once again that have i already learned.
+I have learned branch and merge command.
+--------------
+1)Git Reset
+-->git reset --soft
+:The above command will move the head to the particular commit.It will reset only commited files.
+-->git reset --hard
+:It will reset whole tree structure.
+-->git reset --mixed
+:In this command commit will removed and all files moved on unstaging area.
+2)Git Cherry-Pick
+-->git cherry-pick [commit id]
+:It is used to access the changes introduced to a sub-branch, without changing the branch.
+3)Git Log Stat
+-->This command will display the files that have been modified
+4)Git log Patch
+-->git log --patch 
+:The git log patch command displays the files that have been modified in directory.
+5)For checking author
+-->git log --author=["Author name"] 
+:The above command will display all the commits made by the given author.
+6)Git show
+-->git show --name-only [commit id]
+:It will shows all details of commited file and deleted files etc.
+-->git show [commit id] abc.patch
+:This command will create a patch file with including all details in the file with modified history.
+Now working on Git Squash commands...
+ 
