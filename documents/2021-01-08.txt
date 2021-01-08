@@ -1,0 +1,17 @@
+Date:2021-01-08
+Topic:HTML/CSS javascript
+--------------------------
+Today i have learnd many new thing in html,css and javascript
+I have solved all exercies that given by you at today's end of the day.
+1)HTML/CSS
+-->whole revision of html and css
+-->practice on html table exercise
+-->html link,image and frames
+-->learn about figure tag
+-->css flexbox,box model etc
+2)Javascript
+-->revision on javascript
+-->comments,variables and operators
+-->datatypes,array and string method
+-->defining object in js
+-->function in javascript
