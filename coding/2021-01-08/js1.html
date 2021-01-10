@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise2</title>
+</head>
+
+<body>
+    <script>
+        let markmass = 60;
+        let markhaight = 4;
+        let johnmass = 30;
+        let johnhaight = 3;
+
+        function BMI(a, b) {
+            return a / (b * b)
+
+        }
+        let mbmi = BMI(markmass, markhaight);
+        let jbmi = BMI(johnmass, johnhaight);
+        let boo = mbmi > jbmi ? true : false
+        document.write("Is mark's bmi higher than john's" + "  ", boo)
+    </script>
+</body>
+
+</html>
