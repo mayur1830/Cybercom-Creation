@@ -1,0 +1,43 @@
++
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise3</title>
+</head>
+
+<body>
+    <script>
+        let javg = (89 + 120 + 103) / 3
+        let mavg = (116 + 94 + 123) / 3
+        if (javg > mavg) {
+            document.write("john's average score is" + javg + "winner is john's team" + "<br/>");
+        } else {
+            document.write("Mike's average score is" + mavg + "winner is Mike's team" + "<br/>");
+        }
+        //changing score
+        let javg1 = (120 + 94 + 12) / 3
+        let mavg1 = (89 + 120 + 10) / 3
+        if (javg1 > mavg1) {
+            document.write("john's average score is" + javg1 + "winner is john's team" + "<br/>");
+        } else {
+            document.write("Mike's average score is" + mavg1 + "winner is Mike's team" + "<br/>");
+        }
+        let merryavg = (97 + 134 + 105) / 3
+        if (merryavg > javg && merryavg > mavg) {
+            document.write("Marry's average score is" + merryavg + "winner is marry's team" + "<br/>")
+
+        } else if (javg > merryavg && javg > mavg) {
+            document.write("john's average score is" + javg1 + "winner is john's team" + "<br/>");
+
+
+        } else {
+            document.write("Mike's average score is" + mavg1 + "winner is Mike's team" + "<br/>");
+        }
+    </script>
+
+</body>
+
+</html>
