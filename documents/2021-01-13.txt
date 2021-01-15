@@ -1,0 +1,32 @@
+Date:2021-01-13
+Topic:javascript
+---------------------
+1)Javascript Dom:
+-->DOM stands for document object model.
+-->In dom every html element like a document object and we are manipulating data with the help of javascript
+2)Methods for getting data
+-->document.getElementById('id')
+:pass id and it will return element
+-->document.getElementsByTagName('name')
+:return specified data in the given tag
+-->document.getElementsByClassName('classname')
+:return data in specific class
+3)Method for setting Data
+document.getElementById('id').innerText=""
+:new text will be given at specific id
+-->document.getElementById.innerHTML=" "
+:retuen new html data
+-->document.getElementById('id').setAttribute("attribute"," name")
+:set attribute at specific id
+3)Adding and Deleting Eelements
+-->document.createElement(elementname)
+:create new html element
+-->document.removeChild(elementname)
+:remove html element
+-->document.write(text):
+:write on output stream
+4)Queryselector and QuerySelectorAll
+-->document.querySelector("selector)
+:Find first html element with matched specified css selector
+-->document.querySelectorAll("selector")
+:Find all html element with matched specified css selector
