@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 380px;
+    margin: 70px auto 0px auto;
+}
+
+h1 {
+    text-align: center;
+    background-image: url(i2.jpg);
+    width: 215px;
+    height: 100px;
+    padding-top: 50px;
+    color: beige;
+}
+
+.icon1 input[type=button] {
+    border-radius: 8px;
+    width: 100px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.icon1 {
+    margin: auto 0;
+    padding-left: 50px;
+}
+
+.icon input[type=text] {
+    padding-left: 40px;
+}
+
+.icon input[type=email] {
+    padding-left: 40px;
+}
+
+.icon input[type=tel] {
+    padding-left: 40px;
+}
+
+.icon textarea {
+    padding-left: 40px;
+}
+
+.icon {
+    position: relative;
+}
+
+.icon i {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    padding: 9px 8px;
+    color: #aaa;
+}
