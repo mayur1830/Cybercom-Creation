@@ -1,0 +1,41 @@
+#main {
+    border: 1px solid black;
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+    background-color: blanchedalmond;
+}
+
+img {
+    height: 15px;
+    width: 15px;
+    padding-left: 10px;
+    margin-bottom: -4px;
+}
+
+h2 {
+    margin-top: -10px;
+}
+
+label {
+    width: 200px;
+    clear: left;
+    text-align: right;
+    padding-right: 10px;
+}
+
+input,
+label {
+    float: left;
+}
+
+p {
+    text-align: center;
+    font-size: 11px;
+    padding-left: 120px;
+    margin-top: -15px;
+}
+
+.btn {
+    margin-left: 150px;
+}
