@@ -1,0 +1,19 @@
+#data {
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+#box1 {
+    width: 50%;
+    background-color: turquoise;
+}
+
+#box2 {
+    width: 50%;
+    background-color: violet;
+}
+
+#box3 {
+    width: 50%;
+    background-color: yellow;
+}

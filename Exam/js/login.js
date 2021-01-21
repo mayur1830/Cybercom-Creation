@@ -21,17 +21,34 @@ document.getElementById('login').addEventListener('click', function login() {
         window.location = "dashboard.html";
     } else {
 
-        var x = JSON.parse(localStorage.getItem("user"))
+        var x = JSON.parse(localStorage.getItem("user"));
         for (let i = 0; i < x.length; i++) {
 
             if (x[i].email === email && x[i].pass === pass) {
                 const now = new Date()
-                Logintime.push(now.getTime())
+                Logintime.push(now)
                 localStorage.setItem("time", JSON.stringify(Logintime))
                 window.location = "dashboard.html"
             }
         }
 
     }
+
+})
+document.getElementById('logout').addEventListener('click', function logout() {
+    var Logouttime = []
+    if (localStorage.getItem('time1')) {
+        Logouttime = JSON.parse(localStorage.getItem('time1'));
+
+    }
+
+
+    const now = new Date()
+    Logouttime.push(now)
+    localStorage.setItem("time1", JSON.stringify(Logouttime))
+    window.location = "login.html"
+
+
+
 
 })
