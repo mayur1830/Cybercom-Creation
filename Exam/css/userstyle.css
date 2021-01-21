@@ -6,3 +6,38 @@ h2 {
     padding-left: 80px;
     margin-top: 40px;
 }
+
+table,
+th {
+    text-align: center;
+    border: 1px solid red;
+}
+
+#t1 tr:nth-child(even) {
+    background-color: wheat;
+}
+
+#t1 tr:nth-child(odd) {
+    background-color: tomato;
+}
+
+#t1 th {
+    background-color: black;
+    color: white;
+}
+
+#data {
+    width: 80%;
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+#edit,
+#delete {
+    background-color: teal;
+    color: white;
+    text-align: right;
+    display: inline;
+    border: 0px;
+    text-decoration: underline blue;
+}

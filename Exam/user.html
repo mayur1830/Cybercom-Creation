@@ -51,47 +51,8 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        document.getElementById('adduser').addEventListener('click', function fun() {
-            var arr = []
-            if (localStorage.getItem('user')) {
-                arr = JSON.parse(localStorage.getItem('user'));
 
-            }
-            var obj = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                pass: document.getElementById('password').value,
-                dob: document.getElementById('dob').value
-
-            }
-            arr.push(obj)
-            console.log(arr)
-            localStorage.setItem("array", JSON.stringify(arr))
-        })
-        var x = JSON.parse(localStorage.getItem("user"));
-        document.write('<table border = "1" id = "table1">');
-        document.write('<tr>');
-        document.write('<th>Name</th> <th>Email</th> <th>Password</th> <th>BirthDate</th>');
-        document.write('</tr>')
-        if (x === null) {
-            alert("Records not found!");
-            document.getElementById("table1").style.display = "none";
-
-        } else {
-            for (let i = 0; i < x.length; i++) {
-                document.write('<tr>')
-                document.write('<td>' + x[i].name + '</td>')
-                document.write('<td>' + x[i].email + '</td>')
-                document.write('<td>' + x[i].pass + '</td>')
-                document.write('<td>' + x[i].dob + '</td>')
-                document.write('</tr>')
-
-
-            }
-        }
-        document.write('</table>');
-    </script>
+    <script src="js/user.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
