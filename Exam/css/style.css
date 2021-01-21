@@ -11,8 +11,7 @@ h2 {
 }
 
 #login,
-#register,
-#admin_register {
+#register {
     text-align: center;
     margin-left: 45%;
 }

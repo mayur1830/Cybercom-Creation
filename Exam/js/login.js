@@ -1,28 +1,18 @@
 document.getElementById('register').addEventListener('click', function fun() {
-    var attempt = 1
-    if (attempt === 0) {
-        alert('Admin already Registered')
-    } else {
+    var attempt = 1;
+    if (attempt === 1) {
         window.location = "registration.html";
+    } else {
+        alert("Admin already registered")
     }
-    var Admin_info = {
-        name: document.getElementById('admin_name').value,
-        email: document.getElementById('admin_email').value,
-        pass: document.getElementById('admin_password').value,
-        conpass: document.getElementById('admin_cpassword').value,
-        city: document.getElementById('admin_city').value,
-        state: document.getElementById('admin_state').value
+
+
+
+})
+document.getElementById('login').addEventListener('click', function login() {
+    var email = document.getElementById('email').value;
+    var pass = document.getElementById('password').value;
+    if (email === "abc@123" && pass === "abc") {
+        window.location = "dashboard.html";
     }
-    document.getElementById('admin_register').addEventListener('click', function register() {
-        window.location = "login.html"
-        alert('Registration Successfully')
-        attempt--
-        document.getElementById('register').disabled = true;
-    })
-
-
-
-
-
-
 })
