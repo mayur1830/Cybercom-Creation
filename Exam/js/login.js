@@ -10,9 +10,28 @@ document.getElementById('register').addEventListener('click', function fun() {
 
 })
 document.getElementById('login').addEventListener('click', function login() {
+    var Logintime = []
+    if (localStorage.getItem('time')) {
+        Logintime = JSON.parse(localStorage.getItem('time'));
+
+    }
     var email = document.getElementById('email').value;
     var pass = document.getElementById('password').value;
     if (email === "abc@123" && pass === "abc") {
         window.location = "dashboard.html";
+    } else {
+
+        var x = JSON.parse(localStorage.getItem("user"))
+        for (let i = 0; i < x.length; i++) {
+
+            if (x[i].email === email && x[i].pass === pass) {
+                const now = new Date()
+                Logintime.push(now.getTime())
+                localStorage.setItem("time", JSON.stringify(Logintime))
+                window.location = "dashboard.html"
+            }
+        }
+
     }
+
 })

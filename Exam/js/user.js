@@ -62,7 +62,6 @@ function Edit(index) {
     var email = document.getElementById("email").value = x[index].email
     var password = document.getElementById("password").value = x[index].pass
     var dob = document.getElementById("dob").value = x[index].dob
-    document.getElementById('t1').x[index].name
 
 
     //console.log(index)
@@ -70,5 +69,11 @@ function Edit(index) {
 }
 
 function Delete(index) {
-    document.getElementById("t1").removeChild(tr);
+    document.getElementById("t1").deleteRow(index);
+    delete x[i].name;
+    delete x[i].email;
+    delete x[i].pass;
+    delete x[i].dob;
+    delete x[i].age;
+
 }
