@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: tomato;
+}
+
+#header {
+    background-color: yellow;
+    color: green;
+    height: 50px;
+    text-align: center;
+}
+
+#footer {
+    margin-top: 500px;
+    background-color: yellow;
+    color: green;
+    height: 50px;
+    text-align: center;
+}
