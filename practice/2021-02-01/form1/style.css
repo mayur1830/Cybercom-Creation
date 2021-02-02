@@ -1,0 +1,13 @@
+tr {
+    background-color: cornflowerblue;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+input,
+select,
+textarea {
+    background-color: yellowgreen;
+}

@@ -1,0 +1,11 @@
+label {
+    /* Other styling... */
+    text-align: right;
+    clear: both;
+    float: left;
+    margin-right: 50px;
+}
+
+.error {
+    color: #FF0000;
+}
