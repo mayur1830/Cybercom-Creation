@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+body {
+    background: black;
+    font-family: 'Open Sans', sans-serif;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.container .header {
+    text-align: center;
+    font-size: 50px !important;
+    height: 150px;
+    margin: 0;
+    border: 1px;
+    background-color: black;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.header h2 {
+    color: blanchedalmond;
+    font-weight: bold;
+    padding-top: 50px;
+}
+
+.collapse {
+    border: 5px solid black;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.navbar-nav {
+    width: 100%;
+    background-color: crimson;
+    display: flex !important;
+    justify-content: space-evenly !important;
+}
+
+.navbar-nav a {
+    color: blanchedalmond !important;
+    font-size: 20px;
+}
+
+#main-content {
+    align-items: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-content h2 {
+    background-color: blanchedalmond;
+    color: cadetblue;
+    width: 200px;
+    text-align: center;
+    margin-left: 45%;
+}
+
+.table_data {
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+.table_data table {
+    margin-left: 25%;
+    width: 900px;
+    font-size: 20px;
+    color: lightgray;
+}
+
+#update {
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: green;
+}
+
+.btn a {
+    color: white;
+}
+
+#delete {
+    color: azure;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+}
+
+.form_container {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.form_container .add {
+    background-color: blanchedalmond;
+}
+
+.add h2 {
+    text-align: center;
+}
+
+.form_container label {
+    color: azure;
+    font-size: 20px;
+}
+
+span {
+    color: red;
+}
+
+.star {
+    font-size: 25px;
+}
