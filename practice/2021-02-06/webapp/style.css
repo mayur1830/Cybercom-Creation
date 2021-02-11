@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.navbar {
+    background-color: rgb(14, 111, 156) !important;
+}
+
+.navbar-brand {
+    font-size: 36px !important;
+    color: white !important;
+}
+
+.navbar-nav a {
+    color: white !important;
+    width: 40% !important;
+    padding: 30px 50px !important;
+    font-size: 30px;
+}
+
+.navbar-brand:hover {
+    color: rgb(58, 12, 4) !important;
+}
+
+.navbar-nav a:hover {
+    color: rgb(58, 12, 4) !important;
+}
+
+.pagename {
+    margin: 40px 0px;
+}
+
+.btn {
+    height: 55px;
+    font-weight: bold !important;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group i {
+    position: absolute;
+    top: 65px;
+    right: 37px;
+    visibility: hidden;
+}
+
+.form-group small {
+    position: absolute;
+    visibility: hidden;
+}
+
+.user_form {
+    width: 50%;
+}
+
+.form-group {
+    display: inline-block;
+    width: calc(50% - 1px);
+    padding: 20px !important;
+}
+
+.form-group label {
+    font-size: 20px;
+}
+
+.form-control {
+    margin: 0 !important;
+}
+
+.form-group.success input {
+    border-color: #2ecc71;
+}
+
+.form-group.error input {
+    border-color: #e74c3c;
+}
+
+.form-group.success i.fa-check-circle-o {
+    visibility: visible !important;
+    color: #2ecc71 !important;
+}
+
+.form-group.error small {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-group.error i.fa-exclamation-circle {
+    visibility: visible !important;
+    color: #e74c3c !important;
+}
+
+#update {
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: green;
+}
+
+.btn a {
+    color: white;
+}
+
+table {
+    width: 70%;
+    text-align: center;
+}
+
+#delete {
+    color: azure;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+}
+
+.pagination {
+    margin-left: 28%;
+    display: inline-block;
+    align-items: center;
+}
+
+.pagination a {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 5px;
+    /* border: 3px solid rgb(14, 111, 156); */
+    background-color: black;
+}
+
+.pagination a.active {
+    background-color: rgb(14, 111, 156);
+}
