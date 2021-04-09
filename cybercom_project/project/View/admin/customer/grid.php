@@ -12,8 +12,8 @@ $customers = $this->getCustomers();
                         <h2>Customers Details</h2>
                     </div>
                     <div class="col-sm-7">
-                        <a href="http://localhost/mayur/project/?a=form&c=Admin_Customer" class="btn btn-secondary"><i
-                                class="material-icons">&#xE147;</i> <span>Add New
+                        <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Customer', [], true) ?>').resetParams().load(); "
+                            class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New
                                 Customer</span></a>
                     </div>
                 </div>
@@ -59,10 +59,10 @@ $customers = $this->getCustomers();
                         <td><?php echo $customer->updatedDate ?></td>
                         <td>
                             <div class="buttons">
-                                <a href="<?php echo $this->getUrl()->getUrl('form', null, ['id' => $customer->id]) ?>"
-                                    class="edit" title="Edit" data-toggle="tooltip"><i
-                                        class="material-icons">edit</i></a>
-                                <a href="<?php echo $this->getUrl()->getUrl('delete', null, ['id' => $customer->id]) ?>"
+                                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Customer', ['id' => $customer->id]) ?>').resetParams().load(); "
+                                    class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"
+                                        onclick="myFunction()">edit</i></a>
+                                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('delete', 'Customer', ['id' => $customer->id]) ?>').resetParams().load(); "
                                     class="delete" title="Delete" data-toggle="tooltip"><i
                                         class="material-icons">&#xE5C9;</i></a>
                             </div>

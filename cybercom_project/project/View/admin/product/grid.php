@@ -7,7 +7,7 @@
                     <h2>Product Details</h2>
                 </div>
                 <div class="col-sm-7">
-                    <a href="http://localhost/mayur/project/index.php?a=form&c=Admin_product"
+                    <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Product', [], true) ?>').resetParams().load(); "
                         class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New
                             Product</span></a>
                 </div>
@@ -23,7 +23,6 @@
                 <th>Price</th>
                 <th>Discount</th>
                 <th>Quentity</th>
-                <th>Description</th>
                 <th>Status</th>
                 <th>CreatedDate</th>
                 <th>UpdatedDate</th>
@@ -47,7 +46,6 @@ foreach ($products->getData() as $key => $product):
                     <td><?php echo $product->price ?></td>
                     <td><?php echo $product->discount ?></td>
                     <td><?php echo $product->quantity ?></td>
-                    <td><?php echo $product->description ?></td>
                     <?php if ($product->status == 1) {?>
                     <td><span class="status text-success">&bull;</span><?php echo 'Enable' ?></td>
                     <?php } else {?>
@@ -60,25 +58,22 @@ foreach ($products->getData() as $key => $product):
                     <td>
                         <div class="buttons">
 
-                            <a href="<?php echo $this->getUrl()->getUrl('form', null, ['id' => $product->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Product', ['id' => $product->id]) ?>').resetParams().load(); "
                                 class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"
                                     onclick="myFunction()">edit</i></a>
-                            <a href="<?php echo $this->getUrl()->getUrl('delete', null, ['id' => $product->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('delete', 'Product', ['id' => $product->id]) ?>').resetParams().load(); "
                                 class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE5C9;</i></a>
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('add', 'Cart', ['id' => $product->id]) ?>').resetParams().load(); "
+                                class="edit" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">shopping_cart</i></a>
+
                         </div>
                     </td>
-
-
-
-
                 </tr>
                 <?php endforeach;?>
                 <?php endif;?>
-
             </tbody>
-
         </table>
-
     </div>
 </div>

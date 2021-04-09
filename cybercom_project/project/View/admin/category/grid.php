@@ -8,8 +8,8 @@
                     <h2>Category Details</h2>
                 </div>
                 <div class="col-sm-7">
-                    <a href="http://localhost/mayur/project/?a=form&c=Admin_Category" class="btn btn-secondary"><i
-                            class="material-icons">&#xE147;</i> <span>Add New
+                    <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Category', [], true) ?>').resetParams().load(); "
+                        class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New
                             Category</span></a>
                 </div>
             </div>
@@ -19,7 +19,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Status</th>
-                <th>Description</th>
                 <th>ParentID</th>
                 <th>PathId</th>
                 <th>Action</th>
@@ -43,14 +42,14 @@ foreach ($categories->getData() as $key => $category):
                     <?php } else {?>
                     <td><span class="status text-warning">&bull;</span><?php echo 'Disable' ?></td>
                     <?php }?>
-                    <td><?php echo $category->description ?></td>
                     <td><?php echo $category->parentid ?></td>
                     <td><?php echo $category->pathid ?></td>
                     <td>
                         <div class="buttons">
-                            <a href="<?php echo $this->getUrl()->getUrl('form', null, ['id' => $category->id]) ?>"
-                                class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">edit</i></a>
-                            <a href="<?php echo $this->getUrl()->getUrl('delete', null, ['id' => $category->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Category', ['id' => $category->id]) ?>').resetParams().load(); "
+                                class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"
+                                    onclick="myFunction()">edit</i></a>
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('delete', 'Category', ['id' => $category->id]) ?>').resetParams().load(); "
                                 class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE5C9;</i></a>
                         </div>

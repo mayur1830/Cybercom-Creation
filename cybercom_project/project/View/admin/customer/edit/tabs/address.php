@@ -64,10 +64,29 @@ $shipping = $this->getShippingAddress();
     <label class="label" for="country">Country</label>
 </div>
 <div class="form-field col-lg-12">
-    <input class="submit-btn" type="submit" value="Submit">
+    <input class="submit-btn" type="button" id="customer_address" value="Submit">
 </div>
 <script>
-$('form').attr('action',
-    '<?php echo $this->getUrl()->getUrl('save', 'Admin_Customer_Address'); ?>'
-);
+$(document).ready(function() {
+
+    $("#customer_address").click(function() {
+        $('form').attr('action',
+            '<?php echo $this->getUrl()->getUrl('save', 'Customer_Address'); ?>'
+        );
+        var dataString = $('#customerForm').serialize();
+        $.ajax({
+            url: $('#customerForm').prop('action'),
+            type: "POST",
+            data: dataString,
+            success: function(response) {
+                console.log(response);
+                $.each(response.element, function(i, element) {
+                    $(element.selector).html(element
+                        .html);
+                });
+            },
+        })
+    });
+
+});
 </script>

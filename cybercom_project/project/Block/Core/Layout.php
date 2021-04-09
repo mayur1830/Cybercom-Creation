@@ -7,7 +7,7 @@ class Layout extends \Block\Core\Template
     public function __construct()
     {
 
-        $this->setTemplate('View/core/layout/threecolumn.php');
+        $this->setTemplate('View/core/layout/onecolumn.php');
         $this->prepareChildren();
     }
     public function prepareChildren()

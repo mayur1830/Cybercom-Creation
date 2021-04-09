@@ -1,18 +1,14 @@
-<?php
+<div id="contentHtml">
+    <?php
+
 $children = $this->getChildren();
 
 foreach ($children as $child) {
-    echo $child->toHtml();
+    $child->toHtml();
 }
-?>
-<div id="contentHtml">
-</div>
-<script>
-var object = new Base();
 
-object.setParam({
-    'name': 'mayur'
-});
-object.setUrl('http://localhost/mayur/mvc/?a=gridHtml&c=Product');
-console.log(object);
-</script>
+?>
+    <script>
+    var object = new Base();
+    </script>
+</div>

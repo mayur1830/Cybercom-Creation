@@ -10,27 +10,15 @@ class Form extends \Block\Core\Template
         parent::__construct();
         $this->setTemplate('View/admin/customer/edit/tabs/form.php');
     }
-    public function setCustomer(\Model\Admin\Customer $customer)
-    {
-        $this->customer = $customer;
-        return $this;
-    }
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-    public function getOptions()
-    {
-        return $this->customer->getStatusOptions();
-    }
     public function getTitle()
     {
-        if ($this->customer->id) {
-            return 'Edit Customer';
-        } else {
-            return 'Add Customer';
-        }
+        return 'Add/Edit Customer';
 
+    }
+    public function getCustomerGroup()
+    {
+        $cg = \Mage::getModel('Model\Admin\CustomerGroup');
+        return $cg->fetchAll();
     }
 
 }

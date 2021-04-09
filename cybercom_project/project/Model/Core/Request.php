@@ -36,6 +36,6 @@ class Request
     }
     public function getControllerName()
     {
-        return $this->getGet('c', 'index');
+        return $this->getGet('c', 'dashboard');
     }
 }

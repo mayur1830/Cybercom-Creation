@@ -1,8 +1,15 @@
-<?php
+<div id="leftHtml">
+    <?php
+
 $children = $this->getChildren();
+
 foreach ($children as $child) {
     echo $child->toHtml();
 }
+//$this->getTabHtml();
+
 ?>
-<div id="leftHtml">
+    <script>
+    var object = new Base();
+    </script>
 </div>

@@ -4,12 +4,12 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-5">
-                    <h2>Product Details</h2>
+                    <h2>CMS Page Details</h2>
                 </div>
                 <div class="col-sm-7">
-                    <a href="http://localhost/mayur/project/index.php?a=form&c=Admin_CmsPage"
+                    <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'CmsPage', [], true) ?>').resetParams().load(); "
                         class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New
-                            Product</span></a>
+                            CmsPage</span></a>
                 </div>
             </div>
         </div>
@@ -18,7 +18,6 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Identifier</th>
-                <th>Content</th>
                 <th>Status</th>
                 <th>CreatedDate</th>
                 <th>Action</th>
@@ -37,7 +36,6 @@ foreach ($cmsPages->getData() as $key => $cmsPage):
                     <td><?php echo $cmsPage->id ?></td>
                     <td><?php echo $cmsPage->title ?></td>
                     <td><?php echo $cmsPage->identifier ?></td>
-                    <td><?php echo $cmsPage->content ?></td>
                     <?php if ($cmsPage->status == 1) {?>
                     <td><span class="status text-success">&bull;</span><?php echo 'Enable' ?></td>
                     <?php } else {?>
@@ -46,10 +44,10 @@ foreach ($cmsPages->getData() as $key => $cmsPage):
                     <td><?php echo $cmsPage->createdDate ?></td>
                     <td>
                         <div class="buttons">
-                            <a href="<?php echo $this->getUrl()->getUrl('form', null, ['id' => $cmsPage->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'CmsPage', ['id' => $cmsPage->id]) ?>').resetParams().load(); "
                                 class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"
                                     onclick="myFunction()">edit</i></a>
-                            <a href="<?php echo $this->getUrl()->getUrl('delete', null, ['id' => $cmsPage->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('delete', 'CmsPage', ['id' => $cmsPage->id]) ?>').resetParams().load(); "
                                 class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE5C9;</i></a>
                         </div>

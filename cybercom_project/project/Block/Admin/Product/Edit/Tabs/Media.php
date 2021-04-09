@@ -11,19 +11,11 @@ class Media extends \Block\Core\Template
         parent::__construct();
         $this->setTemplate('View/admin/product/edit/tabs/media.php');
     }
-    public function setProduct(\Model\Admin\Product $product)
-    {
-        $this->product = $product;
-        return $this;
-    }
-    public function getProduct()
-    {
-        return $this->product;
-    }
+
     public function setProductMedia()
     {
         $media = \Mage::getModel('Model\Admin\Product\Media');
-        $query = "SELECT * FROM `{$media->getTableName()}` WHERE `productid`= {$this->getProduct()->id}";
+        $query = "SELECT * FROM `{$media->getTableName()}` WHERE `productid`= {$this->getTableRow()->id}";
         $this->productMedia = $media->fetchAll($query);
         return $this;
 

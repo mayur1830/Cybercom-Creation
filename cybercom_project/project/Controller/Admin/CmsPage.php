@@ -25,22 +25,33 @@ class CmsPage extends \Controller\Core\Admin
         }
         return $this->modelCmsPage;
     }
-    public function gridAction()
+    public function gridHtmlAction()
     {
-        try {
-            $grid = \Mage::getBlock('Block\Admin\CmsPage\Grid');
-            $grid->setCmsPages(\Mage::getModel('Model\Admin\CmsPage'));
-            $this->getLayout()->getChild('content')->addChild($grid, 'grid');
-            $this->renderLayout();
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-            $this->redirect('grid', null, [], true);
-        }
-
+        $gridHtml = \Mage::getBlock('Block\Admin\CmsPage\Grid')->setCmsPages(\Mage::getModel('Model\Admin\CmsPage'))->toHtml();
+        $response = [
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => null,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
+    }
+    public function indexAction()
+    {
+        $layout = $this->getLayout();
+        $content = $layout->getChild('content');
+        $left = $layout->getChild('left');
+        echo $layout->toHtml();
     }
     public function formAction()
     {
-
         try {
             $cmsPage = \Mage::getModel('Model\Admin\CmsPage');
             if ($id = (int) $this->getRequest()->getGet('id')) {
@@ -49,15 +60,27 @@ class CmsPage extends \Controller\Core\Admin
                     throw new \Exception("no record found");
                 }
             }
-            $edit = \Mage::getBlock('Block\Admin\CmsPage\Edit')->setCmsPage($cmsPage);
-            $leftcontent = \Mage::getBlock('Block\Admin\CmsPage\Edit\Tabs');
-            $this->getLayout()->getChild('content')->addChild($edit, 'edit');
-            $this->getLayout()->getChild('left')->addChild($leftcontent, 'tab');
-            $this->renderLayout();
-
+            $edit = \Mage::getBlock('Block\Admin\CmsPage\Edit')->setTableRow($cmsPage)->toHtml();
+            $leftcontent = \Mage::getBlock('Block\Admin\CmsPage\Edit\Tabs')->toHtml();
+            $response = [
+                'status' => 'success',
+                'element' => [
+                    [
+                        'selector' => '#contentHtml',
+                        'html' => $edit,
+                    ],
+                    [
+                        'selector' => '#leftHtml',
+                        'html' => $leftcontent,
+                    ],
+                ],
+            ];
+            header("Content-type:appliction/json; charset=utf-8");
+            echo json_encode($response);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+
     }
     public function saveAction()
     {
@@ -80,10 +103,12 @@ class CmsPage extends \Controller\Core\Admin
 
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
-            $this->redirect('grid', null, [], true);
+            $this->gridHtmlAction();
+
         }
 
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
+
     }
     public function deleteAction()
     {
@@ -100,6 +125,7 @@ class CmsPage extends \Controller\Core\Admin
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
         }
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
+
     }
 }

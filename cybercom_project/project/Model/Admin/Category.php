@@ -37,12 +37,14 @@ class Category extends \Model\Core\Table
     {
         $query = "SELECT * FROM `category` WHERE `pathid` LIKE '{$categoryPathId}%'";
         $categories = $this->getAdapter()->fetchAll($query);
-        foreach ($categories as $key => $row) {
-            $row = \Mage::getModel('Model\Admin\Category')->load($row['id']);
-            if ($parentId) {
-                $row->parentid = $parentId;
+        if ($categories) {
+            foreach ($categories->getData() as $key => $row) {
+                $row = \Mage::getModel('Model\Admin\Category')->fetchRow($row['id']);
+                if ($parentId != null) {
+                    $row->parentid = $parentId;
+                }
+                $row->updatePathId();
             }
-            $row->updatePathId();
         }
 
     }

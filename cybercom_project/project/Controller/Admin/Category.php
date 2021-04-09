@@ -25,18 +25,23 @@ class Category extends \Controller\Core\Admin
         }
         return $this->modelCategory;
     }
-    public function gridAction()
+    public function gridHtmlAction()
     {
-        try {
-            $grid = \Mage::getBlock('Block\Admin\Category\Grid');
-            $grid->setCategories(\Mage::getModel('Model\Admin\Category'));
-            $this->getLayout()->getChild('content')->addChild($grid, 'grid');
-            $this->renderLayout();
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-            $this->redirect('grid', null, [], true);
-        }
-
+        $gridHtml = \Mage::getBlock('Block\Admin\Category\Grid')->setCategories(\Mage::getModel('Model\Admin\Category'))->toHtml();
+        $response = [
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => null,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
     }
     public function formAction()
     {
@@ -48,16 +53,29 @@ class Category extends \Controller\Core\Admin
                     throw new \Exception("no record found");
                 }
             }
-            $edit = \Mage::getBlock('Block\Admin\Category\Edit')->setCategory($category);
-            $leftcontent = \Mage::getBlock('Block\Admin\Category\Edit\Tabs');
-            $this->getLayout()->getChild('content')->addChild($edit, 'edit');
-            $this->getLayout()->getChild('left')->addChild($leftcontent, 'tab');
-            $this->renderLayout();
-
+            $edit = \Mage::getBlock('Block\Admin\Category\Edit')->setTableRow($category)->toHtml();
+            $leftcontent = \Mage::getBlock('Block\Admin\Category\Edit\Tabs')->toHtml();
+            $response = [
+                'status' => 'success',
+                'element' => [
+                    [
+                        'selector' => '#contentHtml',
+                        'html' => $edit,
+                    ],
+                    [
+                        'selector' => '#leftHtml',
+                        'html' => $leftcontent,
+                    ],
+                ],
+            ];
+            header("Content-type:appliction/json; charset=utf-8");
+            echo json_encode($response);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+
     }
+
     public function saveAction()
     {
         try {
@@ -82,20 +100,20 @@ class Category extends \Controller\Core\Admin
             $cat->updateChildrenPathIds($categoryPathId);
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
-            $this->redirect('grid', null, [], true);
+            $this->gridHtmlAction();
+
         }
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
     }
 
     public function deleteAction()
     {
         try {
-
+            $category = \Mage::getBlock('Model\Admin\Category');
             $id = $this->getRequest()->getGet('id');
             if (!(int) $id) {
                 throw new \Exception('Invalid ID');
             }
-            $category = \Mage::getBlock('Model\Admin\Category');
             $category->load($id);
             $parentId = $category->parentid;
             $pathId = $category->pathid . "=>";
@@ -107,6 +125,6 @@ class Category extends \Controller\Core\Admin
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
         }
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
     }
 }

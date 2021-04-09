@@ -1,7 +1,6 @@
 <?php
 
-$payment = $this->getPayment();
-$p = $this->getOptions();
+$payment = $this->getTableRow();
 
 ?>
 <div class="form-field col-lg-12">
@@ -27,7 +26,7 @@ $p = $this->getOptions();
     <label class="label" for="status">Status</label>
     <select id="status" class="input-text js-input" name="payment[status]">
         <?php
-foreach ($p as $key => $value) {?>
+foreach ($payment->getStatusOptions() as $key => $value) {?>
         <option value="<?php echo $key ?>" <?php if ($payment->status == $key) {?> selected <?php }?>>
             <?php echo $value ?></option>
 
@@ -37,5 +36,6 @@ foreach ($p as $key => $value) {?>
     </select>
 </div>
 <div class="form-field col-lg-12">
-    <input class="submit-btn" type="submit" value="Submit">
+    <input class="submit-btn" type="button" value="Submit"
+        onclick="object.resetParams().setForm('#paymentForm').load();">
 </div>

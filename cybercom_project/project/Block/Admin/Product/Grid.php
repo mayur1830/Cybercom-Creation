@@ -4,7 +4,6 @@ namespace Block\Admin\Product;
 \Mage::loadFileByClassName('Block\Core\Template');
 class Grid extends \Block\Core\Template
 {
-    public $products = null;
     public function __construct()
     {
         parent::__construct();

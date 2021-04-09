@@ -4,7 +4,6 @@ namespace Block\Admin\Customer\Edit\Tabs;
 \Mage::loadFileByClassName('Block\Core\Template');
 class Address extends \Block\Core\Template
 {
-    protected $customer = null;
     protected $shippingAddress = null;
     protected $billingAddress = null;
     protected $billingData = null;
@@ -14,19 +13,10 @@ class Address extends \Block\Core\Template
         parent::__construct();
         $this->setTemplate('view/admin/customer/edit/tabs/address.php');
     }
-    public function setCustomer(\Model\Admin\Customer $customer)
-    {
-        $this->customer = $customer;
-        return $this;
-    }
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
     public function setShippingAddress()
     {
         $this->shippingAddress = \Mage::getModel('Model\Admin\Customer\Address');
-        $shipping = "SELECT * FROM `customer_address` WHERE  `customer_id`= '{$this->getCustomer()->id}' AND `type`= 'Shipping';";
+        $shipping = "SELECT * FROM `customer_address` WHERE  `customer_id`= '{$this->getTableRow()->id}' AND `type`= 'Shipping';";
         $this->shippingData = $this->shippingAddress->fetchRow($shipping);
         if (!$this->shippingData) {
             return $this->shippingAddress;
@@ -44,7 +34,7 @@ class Address extends \Block\Core\Template
     public function setBillingAddress()
     {
         $this->billingAddress = \Mage::getModel('Model\Admin\Customer\Address');
-        $billing = "SELECT * FROM `customer_address` WHERE  `customer_id`= '{$this->getCustomer()->id}' AND `type`= 'Billing';";
+        $billing = "SELECT * FROM `customer_address` WHERE  `customer_id`= '{$this->getTableRow()->id}' AND `type`= 'Billing';";
         $this->billingData = $this->billingAddress->fetchRow($billing);
         if (!$this->billingData) {
             return $this->billingAddress;

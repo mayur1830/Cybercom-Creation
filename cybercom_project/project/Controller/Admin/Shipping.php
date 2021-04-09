@@ -26,18 +26,30 @@ class Shipping extends \Controller\Core\Admin
         }
         return $this->modelShipping;
     }
-    public function gridAction()
+    public function gridHtmlAction()
     {
-        try {
-            $grid = \Mage::getBlock('Block\Admin\Shipping\Grid');
-            $grid->setShippings(\Mage::getModel('Model\Admin\Shipping'));
-            $this->getLayout()->getChild('content')->addChild($grid, 'grid');
-            $this->renderLayout();
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-            $this->redirect('grid', null, [], true);
-        }
-
+        $gridHtml = \Mage::getBlock('Block\Admin\Shipping\Grid')->setShippings(\Mage::getModel('Model\Admin\Shipping'))->toHtml();
+        $response = [
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => null,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
+    }
+    public function indexAction()
+    {
+        $layout = $this->getLayout();
+        $content = $layout->getChild('content');
+        $left = $layout->getChild('left');
+        echo $layout->toHtml();
     }
     public function formAction()
     {
@@ -49,15 +61,27 @@ class Shipping extends \Controller\Core\Admin
                     throw new \Exception("no record found");
                 }
             }
-            $edit = \Mage::getBlock('Block\Admin\Shipping\Edit')->setShipping($shipping);
-            $leftcontent = \Mage::getBlock('Block\Admin\Shipping\Edit\Tabs');
-            $this->getLayout()->getChild('content')->addChild($edit, 'edit');
-            $this->getLayout()->getChild('left')->addChild($leftcontent, 'tab');
-            $this->renderLayout();
-
+            $edit = \Mage::getBlock('Block\Admin\Shipping\Edit')->setTableRow($shipping)->toHtml();
+            $leftcontent = \Mage::getBlock('Block\Admin\Shipping\Edit\Tabs')->toHtml();
+            $response = [
+                'status' => 'success',
+                'element' => [
+                    [
+                        'selector' => '#contentHtml',
+                        'html' => $edit,
+                    ],
+                    [
+                        'selector' => '#leftHtml',
+                        'html' => $leftcontent,
+                    ],
+                ],
+            ];
+            header("Content-type:appliction/json; charset=utf-8");
+            echo json_encode($response);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+
     }
     public function saveAction()
     {
@@ -82,10 +106,11 @@ class Shipping extends \Controller\Core\Admin
         } catch (\Exception $e) {
             echo "hello";
             $this->getMessage()->setFailure($e->getMessage());
-            $this->redirect('grid', null, [], true);
-        }
+            $this->gridHtmlAction();
 
-        $this->redirect('grid', null, [], true);
+        }
+        $this->gridHtmlAction();
+
     }
 
     public function deleteAction()
@@ -103,6 +128,6 @@ class Shipping extends \Controller\Core\Admin
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
         }
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
     }
 }

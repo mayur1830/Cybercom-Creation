@@ -33,25 +33,34 @@
         </button>
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav mr-auto">
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_product" class="nav-item nav-link"><i
-                        class="fa fa-gears"></i><span>Products</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_category" class="nav-item nav-link"><i
-                        class="fa fa-rocket"></i><span>Category</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_customer" class="nav-item nav-link"><i
-                        class="fa fa-users"></i><span>Customer</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_CustomerGroup" class="nav-item nav-link"><i
-                        class="fa fa-users"></i><span>CustomerGroup</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_shipping" class="nav-item nav-link"><i
-                        class="fa fa-truck"></i><span>Shipping</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_payment" class="nav-item nav-link"><i
-                        class="fa fa-inr"></i><span>Payment</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_admin" class="nav-item nav-link"><i
-                        class="fa fa-user"></i><span>Admin</span></a>
-                <a href="http://localhost/mayur/project/?a=grid&c=Admin_CmsPage" class="nav-item nav-link"><i
-                        class="fa fa-file-text-o"></i><span>CmsPage</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Product') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-gears"></i><span>Products</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Category') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-rocket"></i><span>Category</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Customer') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-users"></i><span>Customer</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'CustomerGroup') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-users"></i><span>CustomerGroup</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Shipping') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-truck"></i><span>Shipping</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Payment') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-inr"></i><span>Payment</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Admin') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-user"></i><span>Admin</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'CmsPage') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-file-text-o"></i><span>CmsPage</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Attribute') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-thermometer-full"></i><span>Attribute</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'ConfigGroup') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-thermometer-full"></i><span>Configration</span></a>
+                <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('gridHtml', 'Order') ?>').resetParams().load(); "
+                    class="nav-item nav-link"><i class="fa fa-thermometer-full"></i><span>Order</span></a>
             </div>
         </div>
     </nav>
 </body>
 
 </html>
+<script>
+var object = new Base();
+</script>

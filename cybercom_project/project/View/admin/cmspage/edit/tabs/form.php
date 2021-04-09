@@ -1,6 +1,5 @@
 <?php
-$cmsPage = $this->getCmsPage();
-$c = $this->getOptions();
+$cmsPage = $this->getTableRow();
 ?>
 <div class="form-field col-lg-12">
     <p class="title"><?php echo $this->getTitle(); ?></p>
@@ -28,7 +27,7 @@ $c = $this->getOptions();
     <label class="label" for="status">Status</label>
     <select id="status" class="input-text js-input" name="cmsPage[status]">
         <?php
-foreach ($c as $key => $value) {?>
+foreach ($cmsPage->getStatusOptions() as $key => $value) {?>
         <option value="<?php echo $key ?>" <?php if ($cmsPage->status == $key) {?> selected <?php }?>>
             <?php echo $value ?></option>
 
@@ -38,7 +37,8 @@ foreach ($c as $key => $value) {?>
     </select>
 </div>
 <div class="form-field col-lg-12">
-    <input class="submit-btn" type="submit" value="Submit">
+    <input class="submit-btn" type="button" value="Submit"
+        onclick="object.resetParams().setForm('#cmspageForm').load();">
 </div>
 <script>
 CKEDITOR.replace('cmsPage[content]');

@@ -1,6 +1,6 @@
 <?php
-$customer = $this->getCustomer();
-$c = $this->getOptions();
+$customer = $this->getTableRow();
+$customerGroup = $this->getCustomerGroup();
 
 ?>
 <div class="form-field col-lg-12">
@@ -10,8 +10,12 @@ $c = $this->getOptions();
     <label class="label" for="status">CustomerGroup</label>
     <select id="status" class="input-text js-input" name="customer[group_id]">
         <option value="---" disabled selected></option>
-        <option value="1">Wholeseller</option>
-        <option value="2">Retailer</option>
+        <?php foreach ($customerGroup->getData() as $key => $customerGroup): ?>
+
+        <option value="<?php echo $customerGroup->id ?>" <?php if ($customer->group_id == $customerGroup->id): ?>
+            selected <?php endif;?>>
+            <?php echo $customerGroup->group_name ?></option>
+        <?php endforeach?>
     </select>
 </div>
 <div class="form-field col-lg-6">
@@ -46,7 +50,7 @@ $c = $this->getOptions();
         <option value="---" disabled selected></option>
 
         <?php
-foreach ($c as $key => $value) {?>
+foreach ($customer->getStatusOptions() as $key => $value) {?>
         <option value="<?php echo $key ?>" <?php if ($customer->status == $key) {?> selected <?php }?>>
             <?php echo $value ?></option>
 
@@ -56,5 +60,6 @@ foreach ($c as $key => $value) {?>
     </select>
 </div>
 <div class="form-field col-lg-12">
-    <input class="submit-btn" type="submit" value="Submit">
+    <input class="submit-btn" type="button" value="Submit"
+        onclick="object.resetParams().setForm('#customerForm').load();">
 </div>

@@ -1,4 +1,5 @@
-<?php $customerGroups = $this->getCustomerGroups();?>
+<?php $customerGroups = $this->getCustomerGroups();
+?>
 <div class="table-responsive">
     <div class="table-wrapper">
         <div class="table-title">
@@ -7,7 +8,7 @@
                     <h2>Product Group Price Details</h2>
                 </div>
                 <div class="col-sm-7">
-                    <input class="submit-btn" type="submit" value="Update">
+                    <input class="submit-btn" type="button" id="group_price" value="Update">
                 </div>
             </div>
         </div>
@@ -43,7 +44,26 @@ foreach ($customerGroups->getData() as $key => $customerGroup): ?>
     </div>
 </div>
 <script>
-$('form').attr('action',
-    '<?php echo $this->getUrl()->getUrl('save', 'Admin_Product_GroupPrice'); ?>'
-);
+$(document).ready(function() {
+
+    $("#group_price").click(function() {
+        $('form').attr('action',
+            '<?php echo $this->getUrl()->getUrl('save', 'Product_GroupPrice'); ?>'
+        );
+        var dataString = $('#productForm').serialize();
+        $.ajax({
+            url: $('#productForm').prop('action'),
+            type: "POST",
+            data: dataString,
+            success: function(response) {
+                console.log(response);
+                $.each(response.element, function(i, element) {
+                    $(element.selector).html(element
+                        .html);
+                });
+            },
+        })
+    });
+
+});
 </script>

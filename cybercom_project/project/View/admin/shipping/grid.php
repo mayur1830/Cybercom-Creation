@@ -7,8 +7,8 @@
                     <h2>Shipping Details</h2>
                 </div>
                 <div class="col-sm-7">
-                    <a href="http://localhost/mayur/project/?a=form&c=Admin_Shipping" class="btn btn-secondary"><i
-                            class="material-icons">&#xE147;</i> <span>Add New
+                    <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Shipping', [], true) ?>').resetParams().load(); "
+                        class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New
                             Shipping</span></a>
                 </div>
             </div>
@@ -46,9 +46,10 @@
                     <td><?php echo $shipping->createdDate ?></td>
                     <td>
                         <div class="buttons">
-                            <a href="<?php echo $this->getUrl()->getUrl('form', null, ['id' => $shipping->id]) ?>"
-                                class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">edit</i></a>
-                            <a href="<?php echo $this->getUrl()->getUrl('delete', null, ['id' => $shipping->id]) ?>"
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('form', 'Shipping', ['id' => $shipping->id]) ?>').resetParams().load(); "
+                                class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons"
+                                    onclick="myFunction()">edit</i></a>
+                            <a onclick="object.setUrl('<?php echo $this->getUrl()->getUrl('delete', 'Shipping', ['id' => $shipping->id]) ?>').resetParams().load(); "
                                 class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE5C9;</i></a>
                         </div>

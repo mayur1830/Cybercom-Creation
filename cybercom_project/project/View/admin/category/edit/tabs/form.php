@@ -1,6 +1,5 @@
 <?php
-$category = $this->getCategory();
-$c = $this->getOptions();
+$category = $this->getTableRow();
 $categoryOptions = $this->getCategoryOptions();
 ?>
 <div class="form-field col-lg-12">
@@ -32,7 +31,7 @@ $categoryOptions = $this->getCategoryOptions();
     <label class="label" for="status">Status</label>
     <select id="status" class="input-text js-input" name=category[status]">
         <?php
-foreach ($c as $key => $value) {?>
+foreach ($category->getStatusOptions() as $key => $value) {?>
         <option value="<?php echo $key ?>" <?php if ($category->status == $key) {?> selected <?php }?>>
             <?php echo $value ?></option>
 
@@ -42,5 +41,6 @@ foreach ($c as $key => $value) {?>
     </select>
 </div>
 <div class="form-field col-lg-12">
-    <input class="submit-btn" type="submit" value="Submit">
+    <input class="submit-btn" type="button" value="Submit"
+        onclick="object.resetParams().setForm('#categoryForm').load();">
 </div>

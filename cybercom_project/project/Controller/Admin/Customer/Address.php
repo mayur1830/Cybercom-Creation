@@ -4,6 +4,24 @@ namespace Controller\Admin\Customer;
 \Mage::loadFileByClassName('Controller\Core\Admin');
 class Address extends \Controller\Core\Admin
 {
+    public function gridHtmlAction()
+    {
+        $gridHtml = \Mage::getBlock('Block\Admin\Customer\Grid')->setCustomers(\Mage::getModel('Model\Admin\Customer'))->toHtml();
+        $response = [
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => null,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
+    }
     public function saveAction()
     {
         try {
@@ -40,7 +58,8 @@ class Address extends \Controller\Core\Admin
             $this->getMessage()->setFailure($e->getMessage());
             $this->redirect('grid', 'Admin_Customer', [], true);
         }
-        $this->redirect('grid', 'Admin_Customer', [], true);
+        $this->gridHtmlAction();
+        //$this->redirect('grid', 'Admin_Customer', [], true);
 
     }
 }

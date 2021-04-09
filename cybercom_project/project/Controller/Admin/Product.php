@@ -25,18 +25,30 @@ class Product extends \Controller\Core\Admin
         }
         return $this->modelProduct;
     }
-    public function gridAction()
+    public function gridHtmlAction()
     {
-        try {
-            $grid = \Mage::getBlock('Block\Admin\Product\Grid');
-            $grid->setProducts(\Mage::getModel('Model\Admin\Product'));
-            $this->getLayout()->getChild('content')->addChild($grid, 'grid');
-            $this->renderLayout();
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-            $this->redirect('grid', null, [], true);
-        }
-
+        $gridHtml = \Mage::getBlock('Block\Admin\Product\Grid')->setProducts(\Mage::getModel('Model\Admin\Product'))->toHtml();
+        $response = [
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => null,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
+    }
+    public function indexAction()
+    {
+        $layout = $this->getLayout();
+        $content = $layout->getChild('content');
+        $left = $layout->getChild('left');
+        echo $layout->toHtml();
     }
     public function formAction()
     {
@@ -48,18 +60,26 @@ class Product extends \Controller\Core\Admin
                     throw new \Exception("no record found");
                 }
             }
-            $edit = \Mage::getBlock('Block\Admin\Product\Edit')->setProduct($product);
-            $leftcontent = \Mage::getBlock('Block\Admin\Product\Edit\Tabs');
-            $this->getLayout()->getChild('content')->addChild($edit, 'edit');
-            $this->getLayout()->getChild('left')->addChild($leftcontent, 'tab');
-            $this->renderLayout();
-
+            $edit = \Mage::getBlock('Block\Admin\Product\Edit')->setTableRow($product)->toHtml();
+            $response = [
+                'status' => 'success',
+                'element' => [
+                    [
+                        'selector' => '#contentHtml',
+                        'html' => $edit,
+                    ],
+                ],
+            ];
+            header("Content-type:appliction/json; charset=utf-8");
+            echo json_encode($response);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+
     }
     public function saveAction()
     {
+
         try {
 
             if ($id = $this->getRequest()->getGet('id')) {
@@ -78,13 +98,10 @@ class Product extends \Controller\Core\Admin
             $productData = $this->getRequest()->getPost('product');
             $this->getModelProduct()->setData($productData);
             $this->getModelProduct()->save();
-
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
-            $this->redirect('grid', null, [], true);
         }
-
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
     }
     public function deleteAction()
     {
@@ -101,6 +118,6 @@ class Product extends \Controller\Core\Admin
         } catch (\Exception $e) {
             $this->getMessage()->setFailure($e->getMessage());
         }
-        $this->redirect('grid', null, [], true);
+        $this->gridHtmlAction();
     }
 }

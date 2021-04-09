@@ -86,19 +86,20 @@ class Table
             }
             $values = implode(',', $args);
             $query = "UPDATE `{$this->getTableName()}` SET {$values} WHERE `{$this->getPrimaryKey()}`= {$id}";
-            // echo $query;
-            // die();
             $this->getAdapter()->update($query);
         }
 
         $this->load($id);
         return $this;
     }
-
-    public function load($id)
+    public function load($value, $key = null)
     {
-        $value = (int) $id;
-        $query = "SELECT * FROM `{$this->getTableName()}`WHERE `{$this->getPrimaryKey()}`={$value}";
+        if (!$key) {
+            $query = "select *  from  `{$this->getTableName()}` where `{$this->getPrimaryKey()}` = '{$value}'";
+        } else {
+            $query = "select *  from  `{$this->getTableName()}` where `{$key}` = '{$value}'";
+        }
+
         return $this->fetchRow($query);
     }
     public function fetchRow($query)

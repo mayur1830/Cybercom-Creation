@@ -22,4 +22,19 @@ class Customer extends \Model\Core\Table
 
         ];
     }
+    public function getBillingAddress()
+    {
+
+        $address = \Mage::getModel('Model\Admin\Customer\Address');
+        $query = "SELECT * FROM `{$address->getTableName()}` WHERE `customer_id`='{$this->id}' AND `type`='Billing'";
+        $address = $address->fetchRow($query);
+        return $address;
+    }
+    public function getShippingAddress()
+    {
+        $address = \Mage::getModel('Model\Admin\Customer\Address');
+        $query = "SELECT * FROM `{$address->getTableName()}` WHERE `customer_id`='{$this->id}' AND `type`='Shipping'";
+        $address = $address->fetchRow($query);
+        return $address;
+    }
 }

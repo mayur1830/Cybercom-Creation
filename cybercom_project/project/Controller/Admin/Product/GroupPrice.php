@@ -5,6 +5,26 @@ namespace Controller\Admin\Product;
 
 class GroupPrice extends \Controller\Core\Admin
 {
+    public function gridHtmlAction()
+    {
+        $gridHtml = \Mage::getBlock('Block\Admin\Product\Edit')->toHtml();
+        $tabHtml = \Mage::getBlock('Block\Admin\Product\Edit\Tabs')->toHtml();
+        $response = [
+            'status' => 'success',
+            'element' => [
+                [
+                    'selector' => '#contentHtml',
+                    'html' => $gridHtml,
+                ],
+                [
+                    'selector' => '#leftHtml',
+                    'html' => $tabHtml,
+                ],
+            ],
+        ];
+        header("Content-type:appliction/json; charset=utf-8");
+        echo json_encode($response);
+    }
     public function saveAction()
     {
         try {
@@ -31,7 +51,9 @@ class GroupPrice extends \Controller\Core\Admin
         } catch (\Exception $e) {
 
         }
-        $this->redirect('form', 'Admin_Product', ['id' => $this->getRequest()->getGet('id'), 'tab' => 'groupPrice']);
+        $this->gridHtmlAction();
+
+        //$this->redirect('form', 'Admin_Product', ['id' => $this->getRequest()->getGet('id'), 'tab' => 'groupPrice']);
 
     }
 

@@ -48,12 +48,11 @@ class Adapter
         }
 
         $result = $this->getConnect()->query($query);
-
-        $rows = $result->fetch_assoc();
-        if (!$rows) {
-            return false;
+        if ($result) {
+            return $result->fetch_assoc();
         }
-        return $rows;
+        return null;
+
     }
     public function fetchAll($query = null)
     {
@@ -81,6 +80,7 @@ class Adapter
     }
     public function query($query)
     {
+
         if (!$this->isConnected()) {
             $this->connection();
         }
